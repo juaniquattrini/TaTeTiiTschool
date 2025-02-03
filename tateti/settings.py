@@ -2,21 +2,20 @@ import os
 import dj_database_url
 from pathlib import Path
 from dotenv import load_dotenv
-
 load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-SECRET_KEY = os.environ.get('SECRET_KEY', 'tu-clave-secreta-de-desarrollo') 
+SECRET_KEY = os.environ.get('SECRET_KEY', 'tu-clave-secreta-de-desarrollo')
 DEBUG = False
 ALLOWED_HOSTS = [
-   'localhost',
-   '127.0.0.1',
-   'tu-app.onrender.com'  
+   'localhost', 
+   '127.0.0.1', 
+   'tu-app.onrender.com'
 ]
 
 INSTALLED_APPS = [
    'django.contrib.admin',
-   'django.contrib.auth', 
+   'django.contrib.auth',
    'django.contrib.contenttypes',
    'django.contrib.sessions',
    'django.contrib.messages',
@@ -25,7 +24,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-   'django.middleware.security.SecurityMiddleware', 
+   'django.middleware.security.SecurityMiddleware',
    'whitenoise.middleware.WhiteNoiseMiddleware',
    'django.contrib.sessions.middleware.SessionMiddleware',
    'django.middleware.common.CommonMiddleware',
@@ -49,7 +48,7 @@ TEMPLATES = [
                'django.contrib.messages.context_processors.messages',
            ],
        },
-   },  
+   },
 ]
 
 WSGI_APPLICATION = 'tateti.wsgi.application'
@@ -62,11 +61,11 @@ DATABASES = {
 }
 
 if os.environ.get('DATABASE_URL'):
-    DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+    DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
 AUTH_PASSWORD_VALIDATORS = [
    {
-       'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',  
+       'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
    },
    {
        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
@@ -80,8 +79,8 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 LANGUAGE_CODE = 'es-ar'
-TIME_ZONE = 'America/Buenos_Aires'
-USE_I18N = True  
+TIME_ZONE = 'America/Buenos_Aires'  
+USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
