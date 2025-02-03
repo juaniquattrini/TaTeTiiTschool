@@ -1,0 +1,4 @@
+CopyDjango
+gunicorn
+whitenoise
+dj-database-url
