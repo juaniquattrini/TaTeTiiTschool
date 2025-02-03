@@ -4,15 +4,22 @@ from pathlib import Path
 from dotenv import load_dotenv
 load_dotenv()
 
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY', 'tu-clave-secreta-de-desarrollo')
+
+# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
+
 ALLOWED_HOSTS = [
    'localhost', 
    '127.0.0.1', 
    'tu-app.onrender.com'
 ]
 
+# Application definition
 INSTALLED_APPS = [
    'django.contrib.admin',
    'django.contrib.auth',
@@ -35,6 +42,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'tateti.urls'
+
 TEMPLATES = [
    {
        'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -53,16 +61,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'tateti.wsgi.application'
 
+# Database
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(default='sqlite:///db.sqlite3', conn_max_age=600)
 }
 
-if os.environ.get('DATABASE_URL'):
-    DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
-
+# Password validation
 AUTH_PASSWORD_VALIDATORS = [
    {
        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -78,13 +82,16 @@ AUTH_PASSWORD_VALIDATORS = [
    },
 ]
 
+# Internationalization
 LANGUAGE_CODE = 'es-ar'
-TIME_ZONE = 'America/Buenos_Aires'  
+TIME_ZONE = 'America/Buenos_Aires'
 USE_I18N = True
 USE_TZ = True
 
+# Static files
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+# Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
