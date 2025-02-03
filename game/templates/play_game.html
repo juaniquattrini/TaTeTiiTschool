@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jugar TA-TE-TI</title>
+</head>
+<body>
+    <h1>Nuevo Juego de TA-TE-TI</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Comenzar Juego</button>
+    </form>
+</body>
+</html>

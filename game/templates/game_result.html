@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resultado del Juego</title>
+</head>
+<body>
+    <h1>Resultado del Juego</h1>
+    <p>Jugador 1: {{ game.player1.username }}</p>
+    <p>Jugador 2: {{ game.player2.username }}</p>
+    <p>Ganador: {{ game.winner.username|default:"Empate" }}</p>
+    <p>Tablero: {{ game.board }}</p>
+</body>
+</html>
