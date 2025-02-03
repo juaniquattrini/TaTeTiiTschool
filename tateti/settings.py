@@ -11,11 +11,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'tu-clave-secreta-de-desarrollo')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-   'localhost', 
-   '127.0.0.1', 
-   'tu-app.onrender.com'
-]
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 INSTALLED_APPS = [
@@ -89,7 +85,7 @@ USE_I18N = True
 USE_TZ = True
 
 # Static files
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'game' / 'static']
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
